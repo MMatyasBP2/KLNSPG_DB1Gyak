@@ -1,0 +1,30 @@
+Êþº¾   < w  
+KLNSPG_2_5  java/lang/Object <init> ()V Code
+  	   LineNumberTable LocalVariableTable this Lwi2gdp_3_5; hf3 '(Ljava/lang/String;Ljava/lang/String;)V  java/lang/String  1  2  3  4  5  6  7 ! 8 # 9 % 0 ' egy ) ketto + harom - negy / ot 1 hat 3 het 5 nyolc 7 kilenc 9 nulla ; java/io/BufferedWriter = java/io/FileWriter
+ < ?  @ (Ljava/lang/String;)V
+ : B  C (Ljava/io/Writer;)V E java/io/BufferedReader G java/io/FileReader
+ F ?
+ D J  K (Ljava/io/Reader;)V
+  M N O replace D(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+ : Q R @ write
+ : T U  newLine
+ D W X Y readLine ()Ljava/lang/String;
+ D [ \  close
+ : [
+ _ a ` java/lang/Exception b  printStackTrace fnevbe Ljava/lang/String; fnevki sor k1 [Ljava/lang/String; k2 sorid I bw Ljava/io/BufferedWriter; br Ljava/io/BufferedReader; i ee Ljava/lang/Exception; StackMapTable h 
+SourceFile KLNSPG_2_5.java !               /     *· ±    
+                          5     ë
+½ YSYSYSYSYSYSYSY SY"SY	$S:
+½ Y&SY(SY*SY,SY.SY0SY2SY4SY6SY	8S:6» :Y» <Y,· >· A:» DY» FY+· H· I:	§ -6
+§ -
+2
+2¶ LN„
+
+
+¡ÿê-¶ P¶ S	¶ VYNÇÿÏ	¶ Z¶ ]§ 
+:¶ ^±  } à ã _  
+   F    
+ =  z  }  Ž  Ÿ  ¢  ¨  ·  Á  Ç  Ì  Ö  Û  à  å  ê     z    ë       ë c d    ë e d  ¢ * f d  Ó  f d  = ® g h  z q i h  } n j k  Ž R l m  Ÿ A n o 	 ¥  p k 
+ å  q r  s   d ÿ ¢ 
+      t t : D  ü ÿ  
+      t t : D  ÿ        t t  _  u    v

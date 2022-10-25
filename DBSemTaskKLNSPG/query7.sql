@@ -1,1 +1,0 @@
-SELECT AVG(capacity) AS Avarage_capacity FROM Zoo.Habitat;

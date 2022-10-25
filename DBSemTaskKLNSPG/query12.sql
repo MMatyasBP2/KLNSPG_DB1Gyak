@@ -1,1 +1,0 @@
-SELECT COUNT(sex) AS Number_of_male_users FROM Zoo.User;

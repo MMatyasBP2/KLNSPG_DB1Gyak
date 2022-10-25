@@ -1,0 +1,112 @@
+1.
+SELECT zoo_site.name AS Zoo FROM Zoo.Site zoo_site
+ORDER BY opening_hours DESC
+LIMIT 1;
+
+2.
+SELECT COUNT(sex) AS Number_of_females FROM Zoo.Employee
+WHERE sex = 'F';
+
+3.
+SELECT first_name AS Surname, last_name AS Forename FROM Zoo.Employee 
+ORDER BY birth_date ASC
+LIMIT 1;
+
+4.
+SELECT emp.first_name AS Surname, emp.last_name AS Forename, emp.birth_date AS Birth_date FROM Zoo.Employee emp
+WHERE emp.first_name = 'Simon';
+
+5.
+SELECT * FROM Zoo.Employee 
+ORDER BY first_name ASC;
+
+6.
+SELECT sit.name AS Zoo FROM Zoo.Site sit
+JOIN Zoo.Habitat hab
+ON sit.site_id = hab.site_id
+WHERE hab.name = 'Medve park';
+
+7.
+SELECT AVG(capacity) AS Avarage_capacity FROM Zoo.Habitat;
+
+8.
+SELECT anim.name AS Name FROM Zoo.Animal anim
+JOIN Zoo.Habitat hab ON anim.habitat_id = hab.habitat_id
+WHERE hab.description LIKE '%etetni%nem%';
+
+9.
+SELECT anim.name AS Name FROM Zoo.Animal anim
+JOIN Zoo.User user ON user.user_id = anim.user_id
+WHERE user.city = 'Budapest';
+
+10.
+SELECT DISTINCT anim.racial AS Racial FROM Zoo.Animal anim
+JOIN Zoo.Habitat hab ON anim.habitat_id = hab.habitat_id
+WHERE hab.location = '#3';
+
+11.
+SELECT user.last_name AS Forename FROM Zoo.User user
+JOIN Zoo.Animal anim
+ON user.user_id = anim.user_id
+WHERE racial = 'Oposszum';
+
+12.
+SELECT COUNT(sex) AS Number_of_males FROM Zoo.User
+WHERE sex = 'M';
+
+13.
+SELECT user.first_name AS Surname, user.last_name AS Forename FROM Zoo.User user
+JOIN Zoo.Animal anim
+ON anim.user_id = user.user_id
+JOIN Zoo.Eat eat ON eat.animal_id = anim.animal_id
+JOIN Zoo.Food food ON food.food_id = eat.food_id
+JOIN Zoo.food_company comp ON comp.food_id = food.food_id
+WHERE comp.company = 'Frosty food';
+
+14.
+SELECT anim.name AS Name FROM Zoo.Animal anim
+JOIN Zoo.Eat eat ON anim.animal_id = eat.animal_id
+JOIN Zoo.food food ON eat.food_id = food.food_id
+JOIN Zoo.Food_company comp ON food.food_id = comp.food_id
+WHERE comp.company LIKE 'Felix%' AND eat.feeding_time LIKE '%12:00%';
+
+15.
+SELECT anim.name AS Name, anim.racial AS Racial FROM Zoo.Animal anim
+JOIN Zoo.Eat eat ON anim.animal_id = eat.animal_id
+JOIN Zoo.Food food ON eat.food_id = food.food_id
+WHERE food.name = 'Sárgarépa' AND eat.feeding_time LIKE '%18:00%';
+
+16.
+SELECT anim.name AS Name, food.name AS Food FROM Zoo.Animal anim
+JOIN Zoo.Eat eat ON anim.animal_id = eat.animal_id
+JOIN Zoo.Food food ON eat.food_id = food.food_id
+WHERE is_delicious = false
+ORDER BY anim.name ASC;
+
+17.
+SELECT user.post_code AS Post_code, user.city AS City, user.street AS Street, user.number AS Number
+FROM Zoo.User user
+JOIN Zoo.Animal anim ON user.user_id = anim.user_id
+JOIN Zoo.Habitat habit ON anim.habitat_id = habit.habitat_id
+JOIN Zoo.Site zoo_site ON habit.site_id = zoo_site.site_id
+WHERE zoo_site.name LIKE '%Veszprém%'
+GROUP BY user.street;
+
+18.
+SELECT user.first_name AS Surname, user.last_name AS Forename FROM Zoo.User user
+JOIN Zoo.Animal anim ON anim.user_id = user.user_id
+JOIN Zoo.Habitat habit ON habit.habitat_id = anim.habitat_id
+JOIN Zoo.Site zoo_site ON zoo_site.site_id = habit.site_id
+WHERE user.city = 'Budapest' AND zoo_site.name NOT LIKE 'Fővárosi%';
+
+19.
+SELECT COUNT(sex) AS Count, first_name AS Surname, last_name AS Forename FROM Zoo.Employee emp
+JOIN Zoo.Site zoo_site ON zoo_site.site_id = emp.site_id
+WHERE zoo_site.name LIKE 'Fővárosi%' AND emp.sex = 'M' AND emp.birth_date < '1970-01-01';
+
+20.
+SELECT user.username AS Username FROM Zoo.User user
+JOIN Zoo.Animal anim ON anim.user_id = user.user_id
+JOIN Zoo.Eat eat ON eat.animal_id = anim.animal_id
+JOIN Zoo.Food food ON food.food_id = eat.food_id
+WHERE food.name = 'Aszalt gyümölcsök' AND user.city != 'Budapest';

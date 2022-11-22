@@ -1,0 +1,22 @@
+1. R(A,B)
+(A,B) -> A és (A,B) -> B
+
+2. R(A,B,C)
+AB -> B
+AC -> B
+A -> B
+B -> B
+
+Reflexivitás
+AC->B
+B->B
+
+3. A -> B, akkor AC -> B is teljesül
+
+4. A -> B és C -> D, akkor AC -> BD is teljesül
+
+5. R(A,B,C,D)
+C->D
+B->DC
+AC->C
+A->B
